@@ -4,7 +4,7 @@
 
     <groupId>com.github.tinyurl</groupId>
     <artifactId>tinyurl-client</artifactId>
-    <version>v1.0.0-SNAPSHOT</version>
+    <version>v1.0.0</version>
     <description>tinyurl客户端SDK</description>
 
     <developers>
