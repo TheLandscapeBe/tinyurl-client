@@ -6,7 +6,11 @@ https://github.com/fofcn/tinyurl
 #使用方法
 1 maven依赖
 ```xml
-
+<dependency>
+    <groupId>com.github.fofcn.tinyurl</groupId>
+    <artifactId>tinyurl-client</artifactId>
+    <version>v1.0.0</version>
+</dependency>
 ```
 2 调用客户端
 ```java
