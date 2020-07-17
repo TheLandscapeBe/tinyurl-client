@@ -5,7 +5,6 @@ import com.github.tinyurl.client.config.TinyUrlClientConfig;
 import com.github.tinyurl.client.entity.TinyUrlObject;
 import com.github.tinyurl.client.entity.TinyUrlParam;
 import com.github.tinyurl.client.util.ObjectUtil;
-import com.sun.deploy.config.ClientConfig;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
