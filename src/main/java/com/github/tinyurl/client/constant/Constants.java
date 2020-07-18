@@ -40,4 +40,6 @@ public class Constants {
     public static final String HTTP_SLASH = "/";
 
     public static final String SEMICOLON = ";";
+
+    public static final String COLON = ":";
 }

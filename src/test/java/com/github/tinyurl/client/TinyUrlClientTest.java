@@ -28,7 +28,7 @@ public class TinyUrlClientTest {
         clientConfig = TinyUrlClientConfig.builder()
                 .appId("1594708959736")
                 .key("1594708959736")
-                .host("http://localhost:80")
+                .host("http://localhost:80;http://192.168.2.175:53000")
                 .build();
 
         httpPoolConfig = HttpPoolConfig.builder()
@@ -45,15 +45,18 @@ public class TinyUrlClientTest {
 
     @Test
     public void testShorten() {
-        TinyUrlParam tinyUrlParam = new TinyUrlParam();
-        tinyUrlParam.setDomain("s.xxx.com");
-        tinyUrlParam.setUrl("https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.30");
-        TinyUrlObject tinyUrlObject = tinyUrlClient.shorten(tinyUrlParam);
-        if (ObjectUtil.isNull(tinyUrlObject)) {
-            Assert.fail();
+        for (int i = 0; i < 100; i++) {
+            TinyUrlParam tinyUrlParam = new TinyUrlParam();
+            tinyUrlParam.setDomain("s.xxx.com");
+            tinyUrlParam.setUrl("https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.30" + i);
+            TinyUrlObject tinyUrlObject = tinyUrlClient.shorten(tinyUrlParam);
+            if (ObjectUtil.isNull(tinyUrlObject)) {
+                Assert.fail();
+            }
+
+            Assert.assertNotNull(tinyUrlObject.getUrl());
+            System.out.println(tinyUrlObject.getUrl());
         }
 
-        Assert.assertNotNull(tinyUrlObject.getUrl());
-        System.out.println(tinyUrlObject.getUrl());
     }
 }

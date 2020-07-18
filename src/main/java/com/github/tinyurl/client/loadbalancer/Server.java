@@ -27,11 +27,7 @@ public class Server {
         StringBuilder urlBuilder = new StringBuilder();
         urlBuilder.append(scheme).append(host);
 
-        boolean nonHttp = port == 80 && !scheme.equals(Constants.HTTP_SCHEMA);
-        boolean nonHttps = port == 443 && !scheme.equals(Constants.HTTPS_SCHEMA);
-        if (nonHttp || nonHttps) {
-            urlBuilder.append(this.port);
-        }
+        urlBuilder.append(Constants.COLON).append(this.port);
 
         url = urlBuilder.toString();
     }
