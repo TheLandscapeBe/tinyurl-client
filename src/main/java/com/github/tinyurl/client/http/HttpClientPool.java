@@ -67,7 +67,7 @@ public class HttpClientPool {
     private final Lock httpClientLock = new ReentrantLock();
     public static final String SCHEME_HTTP = "http";
     public static final String SCHEME_HTTPS = "https";
-    private static volatile CloseableHttpClient httpClient = null;
+    private volatile CloseableHttpClient httpClient = null;
     private final HttpPoolConfig httpPoolConfig;
     private final ThreadFactory evictHttpClientFactory = new ThreadFactory() {
         @Override
