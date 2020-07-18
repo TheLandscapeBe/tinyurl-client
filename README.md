@@ -45,7 +45,7 @@ public class TinyUrlClientTest {
     @Test
     public void testShorten() {
         TinyUrlParam tinyUrlParam = new TinyUrlParam();
-        tinyUrlParam.setDomain("s.pudedu.com");
+        tinyUrlParam.setDomain("s.xxx.com");
         tinyUrlParam.setUrl("https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.30");
         TinyUrlObject tinyUrlObject = tinyUrlClient.shorten(tinyUrlParam);
         if (ObjectUtil.isNull(tinyUrlObject)) {
