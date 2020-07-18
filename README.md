@@ -9,7 +9,7 @@ https://github.com/fofcn/tinyurl
 <dependency>
     <groupId>com.github.fofcn.tinyurl</groupId>
     <artifactId>tinyurl-client</artifactId>
-    <version>v1.0.0</version>
+    <version>v1.0.1</version>
 </dependency>
 ```
 2 调用客户端
