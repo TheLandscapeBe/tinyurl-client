@@ -11,7 +11,7 @@
 
     <groupId>com.github.fofcn.tinyurl</groupId>
     <artifactId>tinyurl-client</artifactId>
-    <version>v2.0.1-SNAPSHOT</version>
+    <version>v2.0.1</version>
     <description>tinyurl客户端SDK</description>
 
     <developers>
@@ -34,7 +34,7 @@
         <url>https://github.com/fofcn/tinyurl-client</url>
         <connection>scm:git:https://github.com/fofcn/tinyurl-client.git</connection>
         <developerConnection>scm:git:https://github.com/fofcn/tinyurl-client.git</developerConnection>
-        <tag>v1.0.2</tag>
+        <tag>v2.0.1</tag>
     </scm>
 
     <properties>
@@ -93,29 +93,16 @@
 
     <distributionManagement>
         <repository>
-            <id>pxjy-maven-releases</id>
-            <name>Pxjy DevCenter Release Repo</name>
-            <url>http://release.nexus.yingtaiwx.com/repository/maven-releases/</url>
+            <id>sonatype-release</id>
+            <name>sonatype Release Repo</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
         <snapshotRepository>
-            <id>pxjy-maven-snapshots</id>
-            <name>Pxjy DevCenter Snapshots Repo</name>
-            <url>http://release.nexus.yingtaiwx.com/repository/maven-snapshots/</url>
+            <id>sonatype-snapshots</id>
+            <name>sonatype Snapshots Repo</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
-
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>sonatype-release</id>-->
-<!--            <name>sonatype Release Repo</name>-->
-<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-<!--        </repository>-->
-<!--        <snapshotRepository>-->
-<!--            <id>sonatype-snapshots</id>-->
-<!--            <name>sonatype Snapshots Repo</name>-->
-<!--            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
-<!--        </snapshotRepository>-->
-<!--    </distributionManagement>-->
 
     <build>
         <finalName>tinyurl-client</finalName>
