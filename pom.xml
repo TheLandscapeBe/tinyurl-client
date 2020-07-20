@@ -4,7 +4,7 @@
 
     <groupId>com.github.fofcn.tinyurl</groupId>
     <artifactId>tinyurl-client</artifactId>
-    <version>v1.0.1</version>
+    <version>v1.0.2-SNAPSHOT</version>
     <description>tinyurl客户端SDK</description>
 
     <developers>
