@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * http连接池配置
  *
- * @author jiquanxi
+ * @author errorfatal89@gmail.com
  * @date 2020/07/17
  */
 @Data
