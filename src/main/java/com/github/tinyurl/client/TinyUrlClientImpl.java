@@ -1,5 +1,6 @@
 package com.github.tinyurl.client;
 
+import com.alibaba.fastjson.JSON;
 import com.github.tinyurl.client.config.HttpPoolConfig;
 import com.github.tinyurl.client.config.TinyUrlClientConfig;
 import com.github.tinyurl.client.constant.Constants;
@@ -16,6 +17,7 @@ import com.github.tinyurl.client.util.NumberUtil;
 import com.github.tinyurl.client.util.ObjectUtil;
 import com.github.tinyurl.client.util.SignUtil;
 import com.github.tinyurl.client.util.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -27,6 +29,7 @@ import java.util.UUID;
  * @author errorfatal89@gmail.com
  * @date 2020/07/15
  */
+@Slf4j
 public class TinyUrlClientImpl implements TinyUrlClient {
 
     private static final String API_SHORTEN = "/shorten";
@@ -52,30 +55,28 @@ public class TinyUrlClientImpl implements TinyUrlClient {
         // 解析服务
         String[] servers = clientConfig.getHost().split(Constants.SEMICOLON);
         for (String s : servers) {
-            String scheme;
-            String hostPort;
+            int defaultPort = 80;
+            String scheme = Constants.HTTPS_SCHEMA;
             if (s.toLowerCase().startsWith(Constants.HTTP_SCHEMA)) {
                 scheme = Constants.HTTP_SCHEMA;
-                hostPort = s.substring(scheme.length());
+                defaultPort = 80;
+
             } else if (s.startsWith(Constants.HTTPS_SCHEMA)) {
                 scheme = Constants.HTTPS_SCHEMA;
-                hostPort = s.substring(scheme.length());
-            } else {
-                // 默认方案为http
-                scheme = Constants.HTTPS_SCHEMA;
-                hostPort = s;
+                defaultPort = 443;
             }
 
+            String hostPort = s.substring(scheme.length());
+
+            // 设置端口号
+            int port = defaultPort;
             String[] hps = hostPort.split(":");
-            if (hps.length != 2) {
-                throw new TinyUrlException(ErrorCode.CLIENT_HOST_FORMAT_ERROR);
+            if (hps.length == 2) {
+                if (!NumberUtil.isNumber(hps[1])) {
+                    throw new TinyUrlException(ErrorCode.CLIENT_HOST_FORMAT_ERROR);
+                }
+                port = Integer.parseInt(hps[1]);
             }
-
-            if (!NumberUtil.isNumber(hps[1])) {
-                throw new TinyUrlException(ErrorCode.CLIENT_HOST_FORMAT_ERROR);
-            }
-
-            int port = Integer.parseInt(hps[1]);
 
             Server server = new Server(hps[0], port, scheme);
 
@@ -105,7 +106,11 @@ public class TinyUrlClientImpl implements TinyUrlClient {
         requestParam.put("sign", SignUtil.sign(requestParam, clientConfig.getKey()));
 
         // 发起请求
-        Response response = restClient.postForObject(server.getUrl() + API_SHORTEN, requestParam, Response.class);
+        String requestUrl = server.getUrl() + API_SHORTEN;
+        log.info("start remote call: url: [{}], param: [{}]", requestUrl, JSON.toJSONString(requestParam));
+        Response response = restClient.postForObject(requestUrl, requestParam, Response.class);
+        log.info("remote call result: url: [{}], param: [{}], result: [{}]", requestUrl,
+                JSON.toJSONString(requestParam), response != null ? JSON.toJSONString(response) : "");
         if (ObjectUtil.isNull(response) || ErrorCode.SUCCESS.getCode() != response.getCode()) {
             throw new TinyUrlException(ErrorCode.CLIENT_REMOTE_CALL_ERROR);
         }
