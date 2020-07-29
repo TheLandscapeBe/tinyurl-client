@@ -1,6 +1,6 @@
 # 短连接服务客户端
-短连接仓库地址：[短连接服务](https://github.com/fofcn/tinyurl) <br>
-https://github.com/fofcn/tinyurl
+短连接仓库地址：[短连接服务](https://github.com/TheLandscapeBe/tinyurl) <br>
+https://github.com/TheLandscapeBe/tinyurl
 
 
 #使用方法
@@ -59,6 +59,7 @@ public class TinyUrlClientTest {
 ```
 
 3 在spring boot中使用
+<br>
 3.1 配置RestTemplate
 ```java
 @Configuration
