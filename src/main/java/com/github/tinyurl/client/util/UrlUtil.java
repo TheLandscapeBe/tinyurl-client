@@ -6,7 +6,7 @@ import java.net.SocketAddress;
 /**
  * url解析工具类
  *
- * @author jiquanxi
+ * @author errorfatal89@gmail.com
  * @date 2020/07/17
  */
 public class UrlUtil {

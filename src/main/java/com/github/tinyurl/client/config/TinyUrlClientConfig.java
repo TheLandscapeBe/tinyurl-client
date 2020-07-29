@@ -2,6 +2,7 @@ package com.github.tinyurl.client.config;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * 短链接客户端配置
@@ -26,5 +27,10 @@ public class TinyUrlClientConfig {
      * app密钥
      */
     private String key;
+
+    /**
+     * spring boot web rest template object
+     */
+    private RestTemplate restTemplate;
 
 }

@@ -81,10 +81,10 @@ public class TinyUrlClientImpl implements TinyUrlClient {
             Server server = new Server(hps[0], port, scheme);
 
             loadBalancer.addServer(server);
-
-            restClient = new RestClient(httpPoolConfig, loadBalancer);
-            restClient.initialize();
         }
+
+        restClient = new RestClient(httpPoolConfig, loadBalancer, clientConfig.getRestTemplate());
+        restClient.initialize();
     }
 
     @Override

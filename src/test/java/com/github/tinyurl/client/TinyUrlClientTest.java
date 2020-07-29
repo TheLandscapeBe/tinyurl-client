@@ -12,7 +12,7 @@ import org.junit.Test;
 /**
  * TinyUrl测试类
  *
- * @author jiquanxi
+ * @author errorfatal89@gmail.com
  * @date 2020/07/17
  */
 public class TinyUrlClientTest {
@@ -47,7 +47,7 @@ public class TinyUrlClientTest {
     public void testShorten() {
         for (int i = 0; i < 100; i++) {
             TinyUrlParam tinyUrlParam = new TinyUrlParam();
-            tinyUrlParam.setDomain("s.xxx.com");
+            tinyUrlParam.setDomain("s.url.com");
             tinyUrlParam.setUrl("https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.30" + i);
             TinyUrlObject tinyUrlObject = tinyUrlClient.shorten(tinyUrlParam);
             if (ObjectUtil.isNull(tinyUrlObject)) {

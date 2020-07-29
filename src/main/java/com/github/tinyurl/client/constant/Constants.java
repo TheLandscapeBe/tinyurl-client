@@ -35,7 +35,7 @@ public class Constants {
 
     public static final String HTTP_SCHEMA = "http://";
 
-    public static final String HTTPS_SCHEMA = "http://";
+    public static final String HTTPS_SCHEMA = "https://";
 
     public static final String HTTP_SLASH = "/";
 
